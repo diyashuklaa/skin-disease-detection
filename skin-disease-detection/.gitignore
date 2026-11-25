@@ -1,0 +1,25 @@
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+
+# Secrets
+.env
+.env.*
+
+# Local database
+database.db
+
+# Uploaded user images
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Dataset
+data/
+
+# IDE
+.vscode/

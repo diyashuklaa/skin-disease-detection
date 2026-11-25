@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Reports | AI Skin Disease Detector{% endblock %}
+{% block content %}
+  <main class="reports-container">
+    <h1>📊 Health Reports Dashboard</h1>
+    <p class="subtitle">View, manage, and download your AI-generated skin health reports.</p>
+
+    <section class="report-summary">
+      <h2>Recent Reports</h2>
+      <table class="reports-table">
+        <thead>
+          <tr><th>Date</th><th>Disease</th><th>Confidence</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          {% for report in reports %}
+          <tr>
+            <td>{{ report.created_at.strftime('%Y-%m-%d') }}</td>
+            <td>{{ report.disease }}</td>
+            <td>{{ report.confidence }}%</td>
+            <td>{{ report.status if report.status else 'Completed' }}</td>
+            <td>
+              <a href="{{ url_for('report', filename=report.image_path, disease=report.disease, confidence=report.confidence) }}" class="download-btn">⬇ Download</a>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="5">No reports yet. Sign in and analyze an image to see reports here.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-stats">
+      <h2>Overall Progress</h2>
+      <p>Track improvements in your skin condition over time with our AI-powered analytics.</p>
+      <div class="stats-placeholder"><p>📉 Graphs & charts coming soon...</p></div>
+    </section>
+  </main>
+{% endblock %}

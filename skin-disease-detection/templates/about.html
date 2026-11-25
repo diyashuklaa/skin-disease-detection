@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}About Us - AI SkinCare{% endblock %}
+{% block content %}
+  <div class="about-container">
+    <h1>About Our Project</h1>
+    <p class="subtitle">Empowering skincare through AI-driven technology and awareness</p>
+
+    <section class="authors">
+      <h2>Meet the Creator</h2>
+      <div class="authors-grid">
+        <div class="author-card">
+          <!-- Replace static/diya_shukla.jpg with YOUR photo (same file name) -->
+          <img src="{{ url_for('static', filename='diya_shukla.jpg') }}" alt="Diya Shukla"
+               onerror="this.style.visibility='hidden'">
+          <h3>Diya Shukla</h3>
+          <p>Deep Learning &amp; AI/ML Enthusiast</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission">
+      <h2>Our Mission</h2>
+      <p>
+        Our goal is to make skincare awareness more accessible through technology.
+        By combining AI and dermatological insights, we help users learn about
+        skin conditions and take sensible preventive measures.
+      </p>
+    </section>
+
+    <section class="how-it-works">
+      <h2>How the Site Works</h2>
+      <ul>
+        <li>🖼️ Upload your skin image — the AI analyzes it using deep learning.</li>
+        <li>📋 Get instant results with condition descriptions and suggestions.</li>
+        <li>📊 Generate downloadable PDF reports.</li>
+        <li>📅 Book dermatologist appointments or find nearby clinics.</li>
+        <li>💬 Chat with our AI assistant for skincare guidance and FAQs.</li>
+      </ul>
+    </section>
+
+    <section class="features">
+      <h2>Main Features</h2>
+      <div class="feature-list">
+        <div>🌞 Tip of the Day</div>
+        <div>🌦️ Weather-Based Skincare</div>
+        <div>🧴 Personalized Routine Generator</div>
+        <div>🧪 AI-Powered Skin Classification</div>
+        <div>📊 PDF Reports &amp; History Tracking</div>
+        <div>💬 Skincare Chatbot Assistant</div>
+      </div>
+    </section>
+
+    <section class="tech">
+      <h2>Technology Behind the App</h2>
+      <p>
+        A <b>MobileNet</b> model fine-tuned with transfer learning on the
+        <b>HAM10000</b> dataset using <b>TensorFlow</b> and <b>Keras</b>.
+        The frontend uses <b>HTML, CSS and JavaScript</b>; the backend is
+        <b>Flask (Python)</b> with <b>OpenCV</b> for image processing,
+        <b>SQLite</b> for storage and <b>FPDF</b> for reports.
+        Chat is powered via the <b>OpenRouter API</b>.
+      </p>
+    </section>
+
+    <section class="journey">
+      <h2>Our Project Journey</h2>
+      <p>
+        Starting as a college project, AI SkinCare grew into a full web app through
+        continuous experimentation: training models, handling class imbalance, and
+        designing a friendly interface.
+      </p>
+    </section>
+
+    <p class="disclaimer">⚠️ For educational and research use only. Not for medical diagnosis.</p>
+  </div>
+{% endblock %}

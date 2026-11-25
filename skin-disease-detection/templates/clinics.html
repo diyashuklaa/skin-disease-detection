@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Nearby Clinics | AI Skin Detector{% endblock %}
+{% block content %}
+  <main class="container" style="margin-top:120px;">
+    <h1>🏥 Nearby Skin Clinics</h1>
+    <p>Find trusted dermatology clinics near you for quick consultations and treatment.</p>
+
+    <div class="clinic-list">
+      {% for clinic in clinics %}
+      <div class="clinic-card">
+        <h2>{{ clinic.name }}</h2>
+        <p><strong>📍 Address:</strong> {{ clinic.address }}</p>
+        <p><strong>📞 Contact:</strong> {{ clinic.contact }}</p>
+        <p><strong>🕒 Hours:</strong> {{ clinic.timing }}</p>
+        <a href="https://www.google.com/maps/search/{{ clinic.name | urlencode }}" target="_blank" rel="noopener" class="map-btn">📍 View on Map</a>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}

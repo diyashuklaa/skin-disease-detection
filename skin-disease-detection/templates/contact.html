@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Contact & Feedback - AI Skin Disease Detector{% endblock %}
+{% block content %}
+<section class="feedback-section">
+  <div class="feedback-card">
+    <h2>📨 Send Us Your Feedback</h2>
+
+    <!-- Submission is handled by script.js (feedback section) -->
+    <form id="feedback-form">
+      <div>
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Enter your Name" required>
+      </div>
+      <div>
+        <label>Your Email</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div>
+        <label>Your Message</label>
+        <textarea name="message" placeholder="Tell us what you think..." required></textarea>
+      </div>
+      <div>
+        <label>Feedback Type</label>
+        <select name="feedback_type" required>
+          <option value="">-- Select --</option>
+          <option value="Bug Report">🐛 Bug Report</option>
+          <option value="Feature Request">💡 Feature Request</option>
+          <option value="General">💬 General Feedback</option>
+        </select>
+      </div>
+      <div>
+        <label>Device Type</label>
+        <select name="device_type">
+          <option value="Mobile">📱 Mobile</option>
+          <option value="Desktop">🖥️ Desktop</option>
+          <option value="Tablet">📱 Tablet</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Rating</label>
+        <div class="star-rating">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
+      </div>
+
+      <input type="hidden" name="page" value="contact">
+      <input type="hidden" name="rating" id="satisfaction" value="5">
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="agree-checkbox" name="agree" required>
+        <label for="agree-checkbox" style="margin: 0;">I agree to share this feedback</label>
+      </div>
+
+      <button type="submit">✉️ Submit Feedback</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

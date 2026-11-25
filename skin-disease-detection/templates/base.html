@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}AI Skin Disease Detector{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- Navigation (shared by every page) -->
+  <header>
+    <nav>
+      <div class="nav-left">
+        <div class="theme-toggle-wrapper">
+          <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        {% set links = [('home','Home'),('appointments','Appointments'),('clinics','Nearby Clinics'),('reports','Reports'),('tips','Skin Care Tips'),('about','About'),('contact','Contact')] %}
+        {% for endpoint, label in links %}
+        <a href="{{ url_for(endpoint) }}" {% if request.endpoint == endpoint %}class="active"{% endif %}>{{ label }}</a>
+        {% endfor %}
+      </div>
+    </nav>
+  </header>
+
+  <!-- Auth button (top right) -->
+  <div class="auth-section">
+    <button id="auth-trigger" class="auth-btn">Sign In / Sign Up</button>
+  </div>
+
+  <!-- Auth modal (shared) -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+
+      <form id="signup-form">
+        <h2>Create Account</h2>
+        <input type="text" id="signup-username" placeholder="Username (min 3 characters)" required minlength="3" autocomplete="username">
+        <input type="email" id="signup-email" placeholder="Email Address" required autocomplete="email">
+        <input type="password" id="signup-password" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
+        <button type="submit">Create Account</button>
+        <p class="switch-text">Already have an account? <a href="#" id="show-login">Sign In</a></p>
+      </form>
+
+      <form id="login-form" style="display: none;">
+        <h2>Welcome Back</h2>
+        <input type="email" id="login-email" placeholder="Email Address" required autocomplete="email">
+        <input type="password" id="login-password" placeholder="Password" required autocomplete="current-password">
+        <button type="submit">Login</button>
+        <p class="switch-text">Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+      </form>
+    </div>
+  </div>
+
+  {% block content %}{% endblock %}
+
+  <!-- Floating chatbot (shared) -->
+  <div id="chatbot-widget">
+    <div id="chat-icon">💬</div>
+    <div id="chat-popup">
+      <div id="chat-header">
+        {% block chat_title %}AI Assistant{% endblock %}
+        <span id="close-chat">&times;</span>
+      </div>
+      <div id="chat-box"></div>
+      <div id="chat-input">
+        <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>

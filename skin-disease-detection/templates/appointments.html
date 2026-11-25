@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Book an Appointment | AI Skin Disease Detector{% endblock %}
+{% block content %}
+<main class="appointment-page">
+  <h1>🩺 Book a Dermatologist Appointment</h1>
+  <p class="subtitle">Schedule a consultation with trusted skin specialists near you.</p>
+
+  <form id="appointment-form">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+    <label for="date">Preferred Date</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Preferred Time</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="clinic">Choose Clinic</label>
+    <select id="clinic" name="clinic" required>
+      <option value="">Select a nearby dermatologist</option>
+      {% for c in clinics %}<option>{{ c.name }}</option>{% endfor %}
+    </select>
+
+    <button type="submit">Book Appointment</button>
+  </form>
+
+  <div id="confirmation" class="hidden">
+    <h2>✅ Appointment Booked!</h2>
+    <p>Your request has been saved. The clinic will contact you to confirm.</p>
+  </div>
+</main>
+{% endblock %}
